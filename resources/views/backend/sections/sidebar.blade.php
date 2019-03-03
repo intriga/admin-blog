@@ -33,7 +33,7 @@
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="{{ route('admin.welcome') }}"><i class="fa fa-tachometer"></i> <span>INICIO</span></a></li>
         <li><a href="{{ route('admin.category') }}"><i class="fa fa-bars"></i> <span>CATEGORIAS</span></a></li>
-        <li><a href="#"><i class="fa fa-pencil-square"></i> <span>POSTS</span></a></li>
+        <li><a href="{{ route('admin.post') }}"><i class="fa fa-pencil-square"></i> <span>POSTS</span></a></li>
         <li><a href="#"><i class="fa fa-tags"></i> <span>ETIQUETAS</span></a></li>
         {{-- <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>

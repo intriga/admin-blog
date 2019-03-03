@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
+
 use App\Category;
 
 class CategoryController extends Controller
@@ -42,7 +45,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
         $category = Category::create($request->all());
         return redirect()->route('admin.category')
@@ -85,7 +88,7 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(CategoryUpdateRequest $request, $slug)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
         //dd($category);
