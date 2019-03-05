@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::redirect('/', 'blog');
+
+Route::get('/',               'Web\TemplateController@blog')->name('blog');
+Route::get('articulo/{slug}', 'Web\TemplateController@post')->name('post');
+
+Auth::routes();
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
 
@@ -58,6 +65,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->name(
 // Route::put('admin/category/edit/{slug}', 'Admin\CategoryController@update')->name('admin.category.update');
 // Route::delete('admin/category/{id}', 'Admin\CategoryController@destroy')->name('admin.category.destroy');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('/home', 'HomeController@index')->name('home');
