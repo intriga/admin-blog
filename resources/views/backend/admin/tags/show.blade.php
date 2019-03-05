@@ -5,17 +5,16 @@
     <div class="box">
       
       <div class="box-header">
-        <h3>Categorias</h3>
+        <h3>Etiquetas</h3>
 
-        <a href="{{ route('admin.category') }}" class="btn btn-default btn-sm pull-right">Listado</a>
+        <a href="{{ route('admin.tag') }}" class="btn btn-default btn-sm pull-right">Listado</a>
 
       </div>
 
       <div class="box-body">
 
-        <p><strong>Nombre </strong>{{ $category->name }}</p>
-        {{-- <p><strong>Slug </strong>{{ $category->slug }}</p> --}}
-        <p><strong>body </strong>{{ $category->description }}</p>
+        <p><strong>Nombre </strong>{{ $tag->name }}</p>
+        {{-- <p><strong>Slug </strong>{{ $tag->slug }}</p> --}}        
 
       </div>
 

@@ -19,7 +19,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->name(
 
     Route::get('',                      'AdminController@welcome')->name('welcome');
 
-    // CATEGORUES
+    // CATEGORiES
     Route::get('/category',             'CategoryController@index')->name('category');
     Route::get('/category/create',      'CategoryController@create')->name('category.create');
     Route::post('/category/store',      'CategoryController@store')->name('category.store');
@@ -36,6 +36,15 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->name(
     Route::get('/post/edit/{slug}', 'PostController@edit')->name('post.edit');
     Route::put('/post/edit/{slug}', 'PostController@update')->name('post.update');
     Route::delete('/post/{id}',     'PostController@destroy')->name('post.destroy');
+    
+    // TAGS
+    Route::get('/tag',             'TagController@index')->name('tag');
+    Route::get('/tag/create',      'TagController@create')->name('tag.create');
+    Route::post('/tag/store',      'TagController@store')->name('tag.store');
+    Route::get('/tag/show/{slug}', 'TagController@show')->name('tag.show');
+    Route::get('/tag/edit/{slug}', 'TagController@edit')->name('tag.edit');
+    Route::put('/tag/edit/{slug}', 'TagController@update')->name('tag.update');
+    Route::delete('/tag/{id}',     'TagController@destroy')->name('tag.destroy');
 
 });
 

@@ -11,16 +11,16 @@
     <div class="box">
       
       <div class="box-header">
-        <h3>Crear categoria</h3>
+        <h3>Crear Etiquetas</h3>
 
-        <a href="{{ route('admin.category') }}" class="btn btn-default btn-sm pull-right">Listado</a>
+        <a href="{{ route('admin.tag') }}" class="btn btn-default btn-sm pull-right">Listado</a>
 
       </div>
 
       <div class="box-body">
 
-        {!! Form::open(['route' => 'admin.category.store']) !!}
-          @include('backend.admin.categories.partials.form')
+        {!! Form::open(['route' => 'admin.tag.store']) !!}
+          @include('backend.admin.tags.partials.form')
         {!! Form::close() !!}
 
       </div>

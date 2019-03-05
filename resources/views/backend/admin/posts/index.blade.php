@@ -21,33 +21,34 @@
         <table id="example2" class="table table-bordered table-striped table-hover">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nombre</th>
+              {{-- <th>ID</th> --}}
+              <th>Titulo</th>
               <th>Descripcion</th>
-              <th colspan="2">&nbsp;</th>
+              <th>Ver</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
 
           @foreach ($posts as $post)
             <tr>
-              <td>{{ $post->id }}</td>
+              {{-- <td>{{ $post->id }}</td> --}}
               <td>{{ $post->title }}</td>
               <td>{{ $post->excerpt }}</td>
+              
+              <td>
+                <a href="{{ route('admin.post.show', $post->slug) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>                              
+                
+              </td>
+
               <td class="text-center">
-                <a href="{{ route('admin.post.show', $post->slug) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                
-                <br><br>
-                
                 <a href="{{ route('admin.post.edit', $post->slug) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
 
-                <br><br>
-
-                {!! Form::model($post, ['route' => ['admin.post.destroy', $post->id], 'method' => 'DELETE' ]) !!}
+              <td class="text-center">
+                {!! Form::model($post, ['route' => ['admin.post.destroy', $post->id], 'method' => 'DELETE' ]) !!} 
                   <button class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i></button>
-                {!! Form::close() !!}
-                
-                {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> --}}
-                {{-- <button class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i></button> --}}
+                {!! Form::close() !!}  
               </td>
             </tr>    
           @endforeach
@@ -69,8 +70,8 @@
 <script src="/backend/js/dataTables.bootstrap.min.js"></script>
 
 <script>
-  $(function () {
-      // $('#example1').DataTable()
+    $(function () {
+      $('#example1').DataTable()
       $('#example2').DataTable({
         'paging': true,
         'lengthChange': false,

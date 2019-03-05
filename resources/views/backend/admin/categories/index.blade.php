@@ -21,41 +21,41 @@
         <table id="example2" class="table table-bordered table-striped table-hover">
           <thead>
             <tr>
-              <th>ID</th>
+              {{-- <th>ID</th> --}}
               <th>Nombre</th>
               <th>Descripcion</th>
-              <th colspan="2">&nbsp;</th>
+              <th>Ver</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
 
           @foreach ($categories as $category)
             <tr>
-              <td>{{ $category->id }}</td>
+              {{-- <td>{{ $category->id }}</td> --}}
               <td>{{ $category->name }}</td>
               <td>{{ $category->description }}</td>
               <td class="text-center">
                 <a href="{{ route('admin.category.show', $category->slug) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
+              </td>
                 
-                <br><br>
-                
+              <td>
                 <a href="{{ route('admin.category.edit', $category->slug) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
-                <br><br>
-
+              </td>  
+                
+              <td>
                 {!! Form::model($category, ['route' => ['admin.category.destroy', $category->id], 'method' => 'DELETE' ]) !!}
                   <button class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i></button>
                 {!! Form::close() !!}
+              </td>  
                 
-                {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> --}}
-                {{-- <button class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i></button> --}}
-              </td>
             </tr>    
           @endforeach
 
             
         </table>
 
-        {!! $categories->render() !!}
+        {{-- {!! $categories->render() !!} --}}
 
       </div>
 
@@ -77,7 +77,7 @@
         'searching': true,
         'ordering': false,
         'info': true,
-        'autoWidth': false
+        'autoWidth': true
       })
     })
 </script>

@@ -5,16 +5,16 @@
     <div class="box">
       
       <div class="box-header">
-        <h3>Editar categoria</h3>
+        <h3>Editar Etiquetas</h3>
 
-        <a href="{{ route('admin.category') }}" class="btn btn-default btn-sm pull-right">Listado</a>
+        <a href="{{ route('admin.tag') }}" class="btn btn-default btn-sm pull-right">Listado</a>
 
       </div>
 
       <div class="box-body">
 
-        {!! Form::model($category, ['route' => ['admin.category.update', $category->slug], 'method' => 'PUT' ]) !!}
-          @include('backend.admin.categories.partials.form')
+        {!! Form::model($tag, ['route' => ['admin.tag.update', $tag->slug], 'method' => 'PUT' ]) !!}
+          @include('backend.admin.tags.partials.form')
         {!! Form::close() !!}
 
       </div>

@@ -9,7 +9,7 @@
           <img src="/backend/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{ auth()->user()->name }}</p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -34,7 +34,7 @@
         <li class="active"><a href="{{ route('admin.welcome') }}"><i class="fa fa-tachometer"></i> <span>INICIO</span></a></li>
         <li><a href="{{ route('admin.category') }}"><i class="fa fa-bars"></i> <span>CATEGORIAS</span></a></li>
         <li><a href="{{ route('admin.post') }}"><i class="fa fa-pencil-square"></i> <span>POSTS</span></a></li>
-        <li><a href="#"><i class="fa fa-tags"></i> <span>ETIQUETAS</span></a></li>
+        <li><a href="{{ route('admin.tag') }}"><i class="fa fa-tags"></i> <span>ETIQUETAS</span></a></li>
         {{-- <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
             <span class="pull-right-container">

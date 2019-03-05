@@ -11,9 +11,9 @@
     <div class="box">
       
       <div class="box-header">
-        <h3>Categorias</h3>
+        <h3>Etiquetas</h3>
 
-        <a href="{{ route('admin.category.create') }}" class="btn btn-primary btn-sm pull-right">Crear</a>
+        <a href="{{ route('admin.tag.create') }}" class="btn btn-primary btn-sm pull-right">Crear</a>
 
       </div>
 
@@ -21,41 +21,42 @@
         <table id="example2" class="table table-bordered table-striped table-hover">
           <thead>
             <tr>
-              <th>ID</th>
+              {{-- <th>ID</th> --}}
               <th>Nombre</th>
-              <th>Descripcion</th>
-              <th colspan="2">&nbsp;</th>
+              <th>Ver</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
 
-          @foreach ($categories as $category)
+          @foreach ($tags as $tag)
             <tr>
-              <td>{{ $category->id }}</td>
-              <td>{{ $category->name }}</td>
-              <td>{{ $category->description }}</td>
-              <td class="text-center">
-                <a href="{{ route('admin.category.show', $category->slug) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
+              {{-- <td>{{ $tag->id }}</td> --}}
+              <td>{{ $tag->name }}</td>
+              
+              <td>
+                <a href="{{ route('admin.tag.show', $tag->slug) }}" class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i></a>
                 
-                <br><br>
-                
-                <a href="{{ route('admin.category.edit', $category->slug) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
-                <br><br>
-
-                {!! Form::model($category, ['route' => ['admin.category.destroy', $category->id], 'method' => 'DELETE' ]) !!}
-                  <button class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i></button>
-                {!! Form::close() !!}
-                
-                {{-- <button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button> --}}
-                {{-- <button class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i></button> --}}
               </td>
+              
+              <td>
+                <a href="{{ route('admin.tag.edit', $tag->slug) }}" class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              </td>
+                
+                <td>
+                  {!! Form::model($tag, ['route' => ['admin.tag.destroy', $tag->id], 'method' => 'DELETE' ]) !!}
+                    <button class="btn btn-danger btn-xs"><i class="fa fa-times" aria-hidden="true"></i></button>
+                  {!! Form::close() !!}
+                </td>
+                
+              
             </tr>    
           @endforeach
 
             
         </table>
 
-        {!! $categories->render() !!}
+        {{-- {!! $tags->render() !!} --}}
 
       </div>
 

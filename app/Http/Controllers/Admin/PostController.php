@@ -9,6 +9,7 @@ use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 
 use App\Post;
+use App\Category;
 use App\Tag;
 
 class PostController extends Controller
@@ -25,9 +26,9 @@ class PostController extends Controller
      */
     public function index()
     {        
-        $posts = Post::orderBy('id', 'desc')->paginate(5);
-        // $posts = Post::orderBy('id', 'desc')->get();
-        // dd($posts);
+        // $posts = Post::orderBy('id', 'desc')->paginate(5);
+        $posts = Post::orderBy('id', 'desc')->get();
+        //dd($posts);
         return view('backend.admin.posts.index', compact('posts'));
     }
 
@@ -39,7 +40,8 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::orderBy('name', 'ASC')->get();
-        return view('backend.admin.posts.create', compact('tags'));
+        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
+        return view('backend.admin.posts.create', compact('tags', 'categories'));
     }
 
     /**
@@ -48,7 +50,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PostStoreRequest $request)
+    public function store(Request $request)
     {
         $post = Post::create($request->all());
         return redirect()->route('admin.post')
@@ -64,9 +66,9 @@ class PostController extends Controller
     public function show($slug)
     {
         //$post = Post::find($slug);
-        $post = Post::where('slug', $slug)->firstOrFail();
-        // dd($post);
-        return view('backend.admin.posts.show', compact('post'));
+        $post = Post::where('slug', $slug)->firstOrFail();        
+        // dd($post);        
+        return view('backend.admin.posts.show', compact('post', 'tag'));
     }
 
     /**
@@ -82,7 +84,8 @@ class PostController extends Controller
         //  $post = Post::find($slug);
         //dd($post);
         $tags = Tag::orderBy('name', 'ASC')->get();
-        return view('backend.admin.posts.edit', compact('post', 'tags'));
+        $categories = Category::orderBy('name', 'ASC')->pluck('name', 'id');
+        return view('backend.admin.posts.edit', compact('post', 'tags', 'categories'));
     }
 
     /**
@@ -92,7 +95,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PostUpdateRequest $request, $slug)
+    public function update(Request $request, $slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
         //dd($post);

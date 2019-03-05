@@ -1,16 +1,11 @@
 <div class="form-group">
-  {{ Form::label('name', 'Nombre de la categoria') }}
+  {{ Form::label('name', 'Nombre de la etiqueta') }}
   {{ Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) }}
 </div>
 
 <div class="form-group">
   {{ Form::label('slug', 'Url Amigable') }}
   {{ Form::text('slug', null, ['class' => 'form-control', 'id' => 'slug']) }}
-</div>
-
-<div class="form-group">
-  {{ Form::label('description', 'Descripcion') }}
-  {{ Form::textarea('description', null, ['class' => 'form-control']) }}
 </div>
 
 <div class="form-group">

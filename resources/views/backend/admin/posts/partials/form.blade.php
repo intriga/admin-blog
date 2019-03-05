@@ -1,3 +1,10 @@
+{{ Form::hidden('user_id', auth()->user()->id) }}
+
+<div class="form-group">
+  {{ Form::label('category_id', 'Categorias') }}
+  {{ Form::select('category_id', $categories, null, ['class' => 'form-control']) }}
+</div>
+
 <div class="form-group">
   {{ Form::label('title', 'Titulo del Post') }}
   {{ Form::text('title', null, ['class' => 'form-control', 'id' => 'title']) }}
@@ -52,7 +59,7 @@
   <script src="/backend/js/jquery.stringToSlug.min.js"></script>
   <script>
     $(document).ready( function() {
-      $("#name, #slug").stringToSlug({
+      $("#title, #slug").stringToSlug({
         callback: function(text){
           $('#slug').val(text);
         }
